@@ -1,0 +1,120 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    padding: 4rem 0;
+}
+
+.blog-card {
+    width: 30%;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.blog-card:hover {
+    transform: translateY(-3px);
+}
+
+img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 8px;
+}
+
+#container {
+    width: 100%;
+    border: 2px solid red;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 3rem;
+}
+
+.container {
+    width: 90vw;
+    margin: auto;
+}
+
+.hero {
+    text-align: center;
+    height: 80vh;
+    background-size: cover;
+    background-position: center;
+    transition: background-image 1s ease-in-out;
+}
+
+.navbar {
+    padding: 2rem;
+    background-color: #1e1f52;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    width: 100%;
+    top: 0;
+    z-index: 2;
+    position: fixed;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: rgb(241, 241, 241);
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+/* ================== */
+/* The background overlay */
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    z-index: 999;
+    /* On top of everything */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    /* Dimmed background */
+    justify-content: center;
+    align-items: center;
+}
+
+/* The modal box */
+.modal-content {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 80%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content img {
+    width: 100%;
+    border-radius: 10px;
+    margin: 1rem 0;
+}
+
+/* Close button (the X) */
+.close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}

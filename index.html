@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogSpot</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="navbar">
+        <a href="#">Blog Spot</a>
+    </div>
+    <div class="hero">
+    </div>
+    <div class="container">
+        <div id="container">
+        </div>
+        <nav>
+            <button onclick="previouspage()">Previous</button>
+            <div class="page-limiter">
+                <input id="limit" type="number" min="1" max="21">
+                <button onclick="setLimit()">Apply Changes</button>
+            </div>
+            <button onclick="nextpage()">Next</button>
+        </nav>
+    </div>
+<!-- Modal -->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2 id="modalTitle"></h2>
+    <img id="modalImage" src="" alt="">
+    <p id="modalCategory"></p>
+    <p id="modalContent"></p>
+  </div>
+</div>
+
+
+    <script src="script.js">
+    </script>
+</body>
+
+</html>
