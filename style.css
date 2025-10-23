@@ -2,7 +2,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 html::-webkit-scrollbar {
@@ -11,37 +11,36 @@ html::-webkit-scrollbar {
 
 body {
     padding: 4rem 0;
-}
-
-.blog-card {
-    width: 30%;
-    border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 8px;
-}
-
-.blog-card:hover {
-    transform: translateY(-3px);
+    background-color: #f5f5f5;
 }
 
 img {
     width: 100%;
     max-width: 400px;
-    border-radius: 8px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+img:hover {
+    transform: scale(1.02);
 }
 
 #container {
     width: 100%;
-    border: 2px solid red;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 3rem;
+    gap: 2rem;
+    padding: 2rem;
+    margin-top: 5rem;
+    border: none;
 }
 
 .container {
     width: 90vw;
+    max-width: 1200px;
     margin: auto;
 }
 
@@ -50,71 +49,147 @@ img {
     height: 80vh;
     background-size: cover;
     background-position: center;
-    transition: background-image 1s ease-in-out;
+    transition: background-image 0.5s ease-in-out;
+    box-shadow: inset 0 0 100px rgba(0,0,0,0.5);
 }
 
 .navbar {
-    padding: 2rem;
-    background-color: #1e1f52;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
+    padding: 1.5rem 2rem;
+    background: linear-gradient(135deg, #1e1f52, #2a2b6b);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
     width: 100%;
     top: 0;
     z-index: 2;
     position: fixed;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .navbar a {
     text-decoration: none;
-    color: rgb(241, 241, 241);
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
 nav {
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 1rem;
+    margin: 2rem 0;
 }
 
-/* ================== */
-/* The background overlay */
+nav button,
+nav .page-limiter button {
+    outline: none;
+    border: none;
+    background-color: #1e1f52;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+nav button:hover,
+nav .page-limiter button:hover {
+    background-color: #2a2b6b;
+}
+
+.page-limiter {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.page-limiter input {
+    padding: 6px;
+    border: 2px solid #1e1f52;
+    border-radius: 4px;
+    width: 60px;
+}
+
+.blog-card {
+    width: calc(33.333% - 2rem);
+    background: white;
+    border: none;
+    padding: 1.5rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
 .modal {
     display: none;
-    /* Hidden by default */
     position: fixed;
     z-index: 999;
-    /* On top of everything */
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    /* Dimmed background */
+    background: rgba(0, 0, 0, 0.7);
     justify-content: center;
     align-items: center;
+    backdrop-filter: blur(5px);
 }
 
-/* The modal box */
 .modal-content {
-    background: #fff;
-    padding: 2rem;
-    border-radius: 10px;
-    width: 80%;
+    background: white;
+    padding: 2.5rem;
+    border-radius: 16px;
+    width: 90%;
     text-align: center;
     position: relative;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
 .modal-content img {
-    width: 100%;
-    border-radius: 10px;
+    border-radius: 12px;
+}
+
+.modal-content h2 {
+    color: #1e1f52;
+    margin-bottom: 1rem;
+}
+
+.modal-content p {
+    line-height: 1.6;
+    color: #555;
     margin: 1rem 0;
 }
 
-/* Close button (the X) */
 .close {
     position: absolute;
-    right: 15px;
-    top: 10px;
-    font-size: 24px;
+    right: 20px;
+    top: 15px;
+    font-size: 28px;
     cursor: pointer;
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #1e1f52;
+}
+
+@media (max-width: 768px) {
+    .blog-card {
+        width: calc(50% - 1rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .blog-card {
+        width: 100%;
+    }
+    
+    .container {
+        width: 95vw;
+    }
 }
