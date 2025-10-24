@@ -4,31 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BlogSpot</title>
+    <title>My Blog</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="navbar">
-        <a href="#">Blog Spot</a>
-    </div>
-    <div class="hero">
-
-    </div>
-    <div class="container">
-        <div id="container">
-            Loading...
-        </div>
+    <header class="navbar">
+        <h1 class="logo">My Blog</h1>
         <nav>
-            <button onclick="previouspage()">Previous</button>
-            <div class="page-limiter">
-                <input id="limit" type="number" min="1" max="21">
-                <button onclick="setLimit()">Apply Changes</button>
-            </div>
-            <button onclick="nextpage()">Next</button>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
         </nav>
-    </div>
+    </header>
+
+    <section class="hero">
+        <h2>Welcome to My Blog</h2>
+        <p>Insights, tutorials, and thoughts on web development.</p>
+    </section>
+
+    <main id="container" class="blog-list">
+        Loading ...
+    </main>
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -39,9 +37,30 @@
         </div>
     </div>
 
+    <div class="pagination">
+        <div class="text">
+            <p id="pages"></p>
+            <p id="warn"></p>
+        </div>
+        <div class="navigation">
+            <div class="buttons">
+                <button id="prevButton" onclick="previouspage()">« Previous</button>
+                <button onclick="nextpage()">Next »</button>
+            </div>
+            <div class="inputs">
+                <label for="goToPage">Go To Page : </label>
+                <input type="number" name="" id="goToPage">
+                <label for="goToPage">Posts per page : </label>
+                <input type="number" name="" id="limit">
+                <button onclick="setLimit()">Apply Changes</button>
+            </div>
+        </div>
+    </div>
 
-    <script src="script.js">
-    </script>
+    <footer>
+        <p>© 2025 My Blog. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
 </body>
 
 </html>

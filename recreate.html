@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Inter", sans-serif;
+        }
+
+        .modal-content::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5%;
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .navbar nav a {
+            margin-left: 1.5rem;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .navbar nav a:hover {
+            color: #0078ff;
+        }
+
+        /* Hero section */
+        .hero {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: linear-gradient(120deg, #0078ff1a, #00c6ff1a);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            transition: background-image 0.5s ease-in-out;
+        }
+
+        .hero h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: #222;
+        }
+
+        .hero p {
+            color: #555;
+            font-size: 1.1rem;
+        }
+
+        /* Blog grid */
+        .blog-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 3rem 5%;
+            background-color: #fafafa;
+        }
+
+        .blog-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.2rem;
+        }
+
+        .card-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-content p {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .read-more {
+            text-decoration: none;
+            color: #0078ff;
+            font-weight: 600;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .pagination button {
+            padding: 0.6rem 1.2rem;
+            border: none;
+            background: #0078ff;
+            color: #fff;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .pagination button:hover {
+            background: #005fcc;
+        }
+
+        .pagination input {
+            padding: 6px;
+            border-radius: 4px;
+            width: 100px;
+            border: 1px solid #ddd;
+        }
+
+        .pagination .navigation {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .buttons button.disabled {
+            background-color: #222222a3;
+            cursor: not-allowed;
+            color: #ffffff82;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 4px;
+            width: 90%;
+            max-height: 80vh;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: auto;
+        }
+
+        .modal-content img {
+            border-radius: 12px;
+        }
+
+        .modal-content h2 {
+            color: #1e1f52;
+            margin-bottom: 1rem;
+        }
+
+        .modal-content p {
+            line-height: 1.6;
+            color: #555;
+            margin: 1rem 0;
+        }
+
+        .close {
+            position: fixed;
+            right: 20px;
+            top: 15px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #ffffff;
+            transition: color 0.3s ease;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #fff;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="navbar">
+        <h1 class="logo">My Blog</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Welcome to My Blog</h2>
+        <p>Insights, tutorials, and thoughts on web development.</p>
+    </section>
+
+    <main id="container" class="blog-list">
+        Loading ...
+    </main>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <img id="modalImage" src="" alt="">
+            <p id="modalCategory"></p>
+            <p id="modalContent"></p>
+        </div>
+    </div>
+
+    <div class="pagination">
+        <div class="text">
+            <p id="pages"></p>
+            <p id="warn"></p>
+        </div>
+        <div class="navigation">
+            <div class="buttons">
+                <button id="prevButton" onclick="previouspage()">« Previous</button>
+                <button onclick="nextpage()">Next »</button>
+            </div>
+            <div class="inputs">
+                <label for="goToPage">Go To Page : </label>
+                <input type="number" name="" id="goToPage">
+                <label for="goToPage">Posts per page : </label>
+                <input type="number" name="" id="limit">
+                <button onclick="setLimit()">Apply Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 My Blog. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
